@@ -2,8 +2,6 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-app.use(express.static("public"));
-
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -23,3 +21,13 @@ app.delete("/user", (req, res) => {
 app.listen(port, () => {
   console.log(`app is listening on port ${3000}`);
 });
+
+//// serve static assets from public folder
+app.use(express.static("public"));
+
+//// load at specific path
+// app.use("/tomnook", express.static("public"));
+
+//// node path module provides a way of working with directories and file paths. join joins paths/ __dirname gives directory of current file
+// const path = require("path");
+// app.use("/tomnook", express.static(path.join(__dirname, "public")));
